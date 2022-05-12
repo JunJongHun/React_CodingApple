@@ -1,7 +1,10 @@
 import "./App.css";
-
+import s from "./data.js";
+import { useState } from "react";
 import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
 function App() {
+  let [shoes, setShoes] = useState(s);
+  console.log(shoes);
   return (
     <div className="App">
       <Navbar bg="light" variant="light">
@@ -18,26 +21,26 @@ function App() {
       <div className="main-bg"></div>
       <Container>
         <Row>
-          <Col sm>
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              width="80%"
-            ></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-
-          <Col sm>
-            <img
-              src={process.env.PUBLIC_URL + "/logo192.png"}
-              width="80%"
-            ></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col sm>sm=true</Col>
+          {shoes.map((value) => {
+            return <Product sh={value} key={value.id}></Product>;
+          })}
         </Row>
       </Container>
+    </div>
+  );
+}
+
+function Product(props) {
+  return (
+    <div>
+      <Col sm>
+        <img
+          src="https://codingapple1.github.io/shop/shoes3.jpg"
+          width="80%"
+        ></img>
+        <h4>{props.sh.title}</h4>
+        <p>{props.sh.content}</p>
+      </Col>
     </div>
   );
 }
