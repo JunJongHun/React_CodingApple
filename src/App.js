@@ -9,31 +9,6 @@ import { Error } from "./components/Error";
 import { Main } from "./components/Main";
 import { About } from "./components/About";
 
-let YellowBtn = styled.button`
-  background: yellow;
-  color: black;
-`;
-
-let NewBtn = styled(YellowBtn)`
-  margin: 10px;
-  padding: 10px;
-`;
-
-let Btn = styled.button`
-  background: orange;
-`;
-
-function Test() {
-  let [c, cSet] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      cSet(false);
-    }, 2000);
-  });
-  return <div>{c === true ? <Btn>2초후 사라짐</Btn> : null}</div>;
-}
-
 function App() {
   let [shoes, setShoes] = useState(s);
   let navigate = useNavigate();
@@ -68,11 +43,12 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-      <Test></Test>
-      <YellowBtn>버튼</YellowBtn>
-      <NewBtn>눌러줘</NewBtn>
+
       <Routes>
-        <Route path="/" element={<Main shoes={shoes}></Main>}></Route>
+        <Route
+          path="/"
+          element={<Main shoes={shoes} setShoes={setShoes}></Main>}
+        ></Route>
         <Route
           path="/details/:id"
           element={<Detail shoes={shoes}></Detail>}
