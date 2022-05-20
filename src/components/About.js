@@ -1,11 +1,4 @@
-import {
-  Route,
-  Routes,
-  Link,
-  Navigate,
-  Outlet,
-  useNavigate,
-} from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 export function About(props) {
   return (
     <>

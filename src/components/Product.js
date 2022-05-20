@@ -1,7 +1,16 @@
-import { Navbar, Container, Nav, Row, Col, NavbarBrand } from "react-bootstrap";
+import { Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 export function Product(props) {
+  let navigate = useNavigate();
+
   return (
-    <Col sm>
+    <Col
+      sm
+      onClick={() => {
+        navigate(`/details/${props.sh.id}`);
+      }}
+    >
       <img
         src={`https://codingapple1.github.io/shop/shoes${props.sh.id + 1}.jpg`}
         width="80%"

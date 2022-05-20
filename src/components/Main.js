@@ -1,13 +1,5 @@
-import {
-  Route,
-  Routes,
-  Link,
-  Navigate,
-  Outlet,
-  useNavigate,
-} from "react-router-dom";
 import { Product } from "./Product";
-import { Navbar, Container, Nav, Row, Col, NavbarBrand } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 export function Main(props) {
   return (
     <>

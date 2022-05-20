@@ -1,24 +1,28 @@
 import "./App.css";
 import s from "./data.js";
 import { createFactory, useState } from "react";
-import { Navbar, Container, Nav, Row, Col, NavbarBrand } from "react-bootstrap";
-import {
-  Route,
-  Routes,
-  Link,
-  Navigate,
-  Outlet,
-  useNavigate,
-} from "react-router-dom";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Detail } from "./components/Detail";
 import { Error } from "./components/Error";
 import { Main } from "./components/Main";
 import { About } from "./components/About";
 
+let YellowBtn = styled.button`
+  background: yellow;
+  color: black;
+`;
+
+let NewBtn = styled(YellowBtn)`
+  margin: 10px;
+  padding: 10px;
+`;
+
 function App() {
   let [shoes, setShoes] = useState(s);
   let navigate = useNavigate();
-  console.log(shoes);
+
   return (
     <div className="App">
       <Navbar bg="light" variant="light">
@@ -49,10 +53,14 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-
+      <YellowBtn>버튼</YellowBtn>
+      <NewBtn>눌러줘</NewBtn>
       <Routes>
         <Route path="/" element={<Main shoes={shoes}></Main>}></Route>
-        <Route path="/details/:id" element={<Detail></Detail>}></Route>
+        <Route
+          path="/details/:id"
+          element={<Detail shoes={shoes}></Detail>}
+        ></Route>
         <Route path="/about" element={<About></About>}>
           <Route path="member" element={<div>member</div>}></Route>
           <Route path="show" element={<div>show</div>}></Route>
