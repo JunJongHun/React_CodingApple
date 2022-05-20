@@ -1,6 +1,6 @@
 import "./App.css";
 import s from "./data.js";
-import { createFactory, useState } from "react";
+import { createFactory, useEffect, useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -18,6 +18,21 @@ let NewBtn = styled(YellowBtn)`
   margin: 10px;
   padding: 10px;
 `;
+
+let Btn = styled.button`
+  background: orange;
+`;
+
+function Test() {
+  let [c, cSet] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      cSet(false);
+    }, 2000);
+  });
+  return <div>{c === true ? <Btn>2초후 사라짐</Btn> : null}</div>;
+}
 
 function App() {
   let [shoes, setShoes] = useState(s);
@@ -53,6 +68,7 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
+      <Test></Test>
       <YellowBtn>버튼</YellowBtn>
       <NewBtn>눌러줘</NewBtn>
       <Routes>
