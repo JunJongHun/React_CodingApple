@@ -6,6 +6,7 @@ export function Product(props) {
 
   return (
     <Col
+      className="line"
       sm
       onClick={() => {
         navigate(`/details/${props.sh.id}`);
