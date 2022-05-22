@@ -1,23 +1,29 @@
 import { Product } from "./Product";
 import { Container, Row, Button } from "react-bootstrap";
 import axios from "axios";
+import { useEffect, useState } from "react";
+
 export function Main(props) {
+  let [count, setCount] = useState(1);
+
   let pullShoes = async () => {
-    let copy = [...props.shoes];
     try {
-      let data = await axios.get(
-        `https://codingapple1.github.io/shop/data2.json`
+      console.log(count);
+      let newShoes = await axios.get(
+        `https://codingapple1.github.io/shop/data${count}.json`
       );
-      for (const i of data.data) {
-        copy.push(i);
-        console.log(i);
-      }
+      let copy = [...props.shoes, ...newShoes.data];
+      console.log(copy);
       props.setShoes(copy);
     } catch (error) {
       console.log(error);
     }
     return;
   };
+
+  useEffect(() => {
+    pullShoes();
+  }, [count]);
 
   return (
     <>
@@ -32,7 +38,7 @@ export function Main(props) {
       <Button
         variant="primary"
         onClick={() => {
-          pullShoes();
+          setCount(count + 1);
         }}
       >
         상품 더 가져오기

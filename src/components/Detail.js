@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { InputGroup, FormControl } from "react-bootstrap";
+import { Tap } from "./Tap";
+import "../App.css";
 
 let CountInput = styled.h4`
   margin-bottom: 10px;
@@ -25,9 +27,19 @@ export function Detail(props) {
 
     return result;
   };
+  let [fade, setFade] = useState("end");
+  useEffect(() => {
+    let a = setTimeout(() => {
+      setFade("end");
+    }, 100);
+    return () => {
+      clearTimeout(a);
+      setFade("");
+    };
+  }, []);
 
   return (
-    <div className="container">
+    <div className={`container start ${fade}`}>
       <div className="row">
         <div className="col-md-6">
           <img
@@ -57,6 +69,7 @@ export function Detail(props) {
           </div>
           <button className="btn btn-danger">주문하기</button>
         </div>
+        <Tap></Tap>
       </div>
     </div>
   );

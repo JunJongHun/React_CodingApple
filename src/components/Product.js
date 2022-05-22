@@ -1,11 +1,16 @@
 import { Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+let ShoesDiv = styled.div`
+  width: 33%;
+`;
 
 export function Product(props) {
   let navigate = useNavigate();
 
   return (
-    <Col
+    <ShoesDiv
       className="line"
       sm
       onClick={() => {
@@ -18,6 +23,6 @@ export function Product(props) {
       ></img>
       <h4>{props.sh.title}</h4>
       <p>{props.sh.content}</p>
-    </Col>
+    </ShoesDiv>
   );
 }

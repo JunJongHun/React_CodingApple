@@ -5,6 +5,18 @@
   background-position: center;
 }
 
+.start {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.end {
+  transform: scale(1);
+
+  opacity: 1;
+  transition: 2s;
+}
+
 .navnav {
   margin-right: 10px;
 }
