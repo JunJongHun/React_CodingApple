@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { InputGroup, FormControl } from "react-bootstrap";
 import { Tap } from "./Tap";
 import "../App.css";
+import { pushProduct } from "../store/product.js";
+
+import { useSelector, useDispatch } from "react-redux";
 
 let CountInput = styled.h4`
   margin-bottom: 10px;
@@ -38,6 +41,10 @@ export function Detail(props) {
     };
   }, []);
 
+  console.log(props.shoes[num]);
+
+  let dispatch = useDispatch();
+
   return (
     <div className={`container start ${fade}`}>
       <div className="row">
@@ -68,6 +75,14 @@ export function Detail(props) {
             </InputGroup>
           </div>
           <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              dispatch(pushProduct(props.shoes[num]));
+            }}
+          >
+            장바구니 담기
+          </button>
         </div>
         <Tap></Tap>
       </div>
