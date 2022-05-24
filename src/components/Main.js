@@ -3,15 +3,11 @@ import { Container, Row, Button } from "react-bootstrap";
 import axios from "axios";
 export function Main(props) {
   let pullShoes = async () => {
-    let copy = [...props.shoes];
     try {
-      let data = await axios.get(
+      let newShoes = await axios.get(
         `https://codingapple1.github.io/shop/data2.json`
       );
-      for (const i of data.data) {
-        copy.push(i);
-        console.log(i);
-      }
+      let copy = [...props.shoes, ...newShoes.data];
       props.setShoes(copy);
     } catch (error) {
       console.log(error);

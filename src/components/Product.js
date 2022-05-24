@@ -1,13 +1,13 @@
 import { Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "../line.css";
 
 export function Product(props) {
   let navigate = useNavigate();
 
   return (
-    <Col
+    <div
       className="line"
-      sm
       onClick={() => {
         navigate(`/details/${props.sh.id}`);
       }}
@@ -18,6 +18,6 @@ export function Product(props) {
       ></img>
       <h4>{props.sh.title}</h4>
       <p>{props.sh.content}</p>
-    </Col>
+    </div>
   );
 }
