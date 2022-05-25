@@ -8,6 +8,7 @@ import { Detail } from "./components/Detail";
 import { Error } from "./components/Error";
 import { Main } from "./components/Main";
 import { About } from "./components/About";
+import { Cart } from "./components/Cart";
 
 function App() {
   let [shoes, setShoes] = useState(s);
@@ -35,6 +36,13 @@ function App() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              Cart
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
                 navigate("/about");
               }}
             >
@@ -53,6 +61,9 @@ function App() {
           path="/details/:id"
           element={<Detail shoes={shoes}></Detail>}
         ></Route>
+
+        <Route path="/cart" element={<Cart></Cart>}></Route>
+
         <Route path="/about" element={<About></About>}>
           <Route path="member" element={<div>member</div>}></Route>
           <Route path="show" element={<div>show</div>}></Route>
