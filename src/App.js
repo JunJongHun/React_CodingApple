@@ -14,6 +14,10 @@ function App() {
   let [shoes, setShoes] = useState(s);
   let navigate = useNavigate();
 
+  useEffect(() => {
+    localStorage.setItem("recentlyItem", JSON.stringify([]));
+  }, []);
+
   return (
     <div className="App">
       <Navbar bg="light" variant="light">

@@ -13,6 +13,12 @@ export function Product(props) {
     <ShoesDiv
       className="line"
       onClick={() => {
+        let newRecntlyItem = JSON.parse(localStorage.getItem("recentlyItem"));
+        newRecntlyItem.push(props.sh.id);
+        console.log(newRecntlyItem);
+        let arr = new Set(newRecntlyItem);
+        localStorage.setItem("recentlyItem", JSON.stringify([...arr]));
+
         navigate(`/details/${props.sh.id}`);
       }}
     >

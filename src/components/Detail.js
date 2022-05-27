@@ -41,7 +41,7 @@ export function Detail(props) {
     };
   }, []);
 
-  console.log(props.shoes[num]);
+  // console.log(props.shoes[num]);
 
   let dispatch = useDispatch();
 
