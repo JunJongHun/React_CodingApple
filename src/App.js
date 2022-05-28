@@ -9,10 +9,23 @@ import { Error } from "./components/Error";
 import { Main } from "./components/Main";
 import { About } from "./components/About";
 import { Cart } from "./components/Cart";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 function App() {
   let [shoes, setShoes] = useState(s);
   let navigate = useNavigate();
+
+  let result = useQuery("re", () => {
+    return axios
+      .get("https://codingapple1.github.io/userdata.json")
+      .then((a) => {
+        return a.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+  });
 
   useEffect(() => {
     localStorage.setItem("recentlyItem", JSON.stringify([]));
@@ -29,6 +42,7 @@ function App() {
                 navigate("/");
               }}
             >
+              {result.data.name}
               Home
             </Nav.Link>
             <Nav.Link

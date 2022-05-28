@@ -45,6 +45,16 @@ export function Detail(props) {
 
   let dispatch = useDispatch();
 
+  useEffect(() => {
+    let arr = localStorage.getItem("recentlyItem");
+    arr = JSON.parse(arr);
+    arr.push(id);
+    arr = new Set(arr);
+    arr = Array.from(arr);
+    localStorage.setItem("recentlyItem", JSON.stringify(arr));
+    console.log(localStorage.getItem("recentlyItem"));
+  });
+
   return (
     <div className={`container start ${fade}`}>
       <div className="row">

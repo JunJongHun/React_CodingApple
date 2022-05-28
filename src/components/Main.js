@@ -16,7 +16,7 @@ export function Main(props) {
       console.log(copy);
       props.setShoes(copy);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
     return;
   };
